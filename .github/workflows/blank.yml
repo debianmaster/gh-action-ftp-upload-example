@@ -15,3 +15,4 @@ jobs:
         FTP_PASSWORD: "${{ secrets.PROD_FTP_PASSWORD }}"
         LOCAL_DIR: install
         METHOD: sftp
+        PORT: 2222
