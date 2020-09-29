@@ -1,0 +1,19 @@
+name: Upload
+on: push
+jobs:
+
+  publish:
+    name: publish
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@2.0.0
+      env:
+        FTP_SERVER: ${{ secrets.PROD_FTP_SERVER }}
+        FTP_USERNAME: ${{ secrets.PROD_FTP_USERNAME }}
+        FTP_PASSWORD: "${{ secrets.PROD_FTP_PASSWORD }}"
+        LOCAL_DIR: install
+        METHOD: sftp
+        PORT: 2222
+        ARGS: --delete
